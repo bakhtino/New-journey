@@ -1,0 +1,66 @@
+header {
+  margin-top: 45px;
+}
+li {
+  font-size: 30px;
+  list-style-type: none;
+  font-family:monospace;
+  color: black;
+}
+.container {
+  border: 1px solid black;
+  border-radius: 25px;
+  background-color: rgb(34, 193, 195);
+  background: radial-gradient(
+    circle at -1% 57.5%,
+    rgb(65, 173, 51) 0%,
+    rgb(223, 240, 128) 90%
+  );
+}
+.city {
+  text-align: left;
+  margin-top: 90px;
+  margin-right: 60px;
+  font-family: monospace;
+  color: black;
+}
+h1 {
+  text-align: left;
+  margin-top: 90px;
+  margin-right: 60px;
+  font-family: monospace;
+  color: black;
+  font-style: italic;
+}
+h2 {
+  color: black;
+  font-family: monospace;
+  font-size: 90px;
+  font-style: italic;
+}
+.cloud {
+  font-size: 100px;
+  
+}
+.precipitation {
+  text-align: left;
+  margin-top: 10px;
+  
+  color: black;
+}
+
+.humid {
+  font-size: 80px;
+}
+.wind {
+  text-align: left;
+  margin-top: 10px;
+  color: black;
+}
+footer{
+  font-size: 35px;
+  font-family: monospace;
+  text-align: center;
+  font-style: italic;
+  opacity: 0.7;
+}
