@@ -7,8 +7,12 @@ li {
   font-family:monospace;
   color: black;
 }
-p {
+p::first-letter {
   text-transform: capitalize;
+}
+.updated{
+line-height: 140px;
+margin-bottom:0px;
 }
 .container {
   border: 1px solid black;
@@ -21,8 +25,8 @@ p {
   );
 }
 .city {
-  text-align: left;
-  margin-top: 90px;
+  text-align: left;  
+  margin-top: -30px; 
   margin-right: 60px;
   font-family: monospace;
   color: black;
