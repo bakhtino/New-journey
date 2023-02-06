@@ -29,14 +29,16 @@ function showResult(response) {
   console.log(response);
   let h2 = document.querySelector("h2");
   h2.innerHTML = response.data.name;
+  celsiusTemperature = response.data.main.temp;
   let temperature = document.querySelector("#temperature");
-  temperature.innerHTML = Math.round(response.data.main.temp);
+  temperature.innerHTML = Math.round(celsiusTemperature);
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`) ;
   document.querySelector("#description").innerHTML = response.data.weather[0].description;
   document.querySelector("#Humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
   ;
+  
 }
 function findMe(event) {
   event.preventDefault();
@@ -55,6 +57,25 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
+function changeFahrenheit(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
+  let temperatureFahrenheit = document.querySelector("#temperature");
+  temperatureFahrenheit.innerHTML = fahrenheitTemperature;
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  
+
+}
+function changeCelsiuse(event) {
+  event.preventDefault();
+  let temperatureFahrenheit = document.querySelector("#temperature");
+  temperatureFahrenheit.innerHTML = Math.round(celsiusTemperature);
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+}
+
+let celsiusTemperature = null;
 let form = document.querySelector("#search-weather");
 form.addEventListener("submit", findMe);
 
@@ -62,4 +83,10 @@ let currentLocation = document.querySelector("#current");
 currentLocation.addEventListener("click", getCurrentLocation);
 search("Tehran");
 
+
+let fahrenheitLink = document.querySelector("#fahreniheit");
+fahrenheitLink.addEventListener("click", changeFahrenheit);
+
+let celsiusLink = document.querySelector("#celciuse");
+celsiusLink.addEventListener("click", changeCelsiuse);
 
