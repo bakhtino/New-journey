@@ -31,9 +31,12 @@ function showResult(response) {
   h2.innerHTML = response.data.name;
   let temperature = document.querySelector("#temperature");
   temperature.innerHTML = Math.round(response.data.main.temp);
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`) ;
   document.querySelector("#description").innerHTML = response.data.weather[0].description;
   document.querySelector("#Humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML= Math.round(response.data.wind.speed);
+  document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
+  ;
 }
 function findMe(event) {
   event.preventDefault();
