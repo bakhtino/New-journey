@@ -25,7 +25,7 @@ function showResult(response) {
   h2.innerHTML = response.data.name;
   let temperature = document.querySelector("#temperature");
   temperature.innerHTML = Math.round(response.data.main.temp);
-  document.querySelector("#description").innerHTML = response.data.weather[0].main;
+  document.querySelector("#description").innerHTML = response.data.weather[0].description;
   document.querySelector("#Humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML= Math.round(response.data.wind.speed);
 }
