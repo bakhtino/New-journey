@@ -4,15 +4,15 @@ header {
 li {
   font-size: 30px;
   list-style-type: none;
-  font-family:monospace;
+  font-family: monospace;
   color: black;
 }
 p::first-letter {
   text-transform: capitalize;
 }
-.updated{
-line-height: 140px;
-margin-bottom:0px;
+.updated {
+  line-height: 140px;
+  margin-bottom: 0px;
 }
 .container {
   border: 1px solid black;
@@ -25,8 +25,8 @@ margin-bottom:0px;
   );
 }
 .city {
-  text-align: left;  
-  margin-top: -30px; 
+  text-align: left;
+  margin-top: -30px;
   margin-right: 60px;
   font-family: monospace;
   color: black;
@@ -47,12 +47,11 @@ h2 {
 }
 .cloud {
   font-size: 100px;
-  
 }
 .precipitation {
   text-align: left;
   margin-top: 10px;
-  
+
   color: black;
 }
 
@@ -64,19 +63,14 @@ h2 {
   margin-top: 10px;
   color: black;
 }
-footer{
+footer {
   font-size: 35px;
   font-family: monospace;
   text-align: center;
   font-style: italic;
   opacity: 0.7;
 }
-.active{
-  
-  color: black;
-  cursor: default;
-}
-.fahrenheit{
+.active {
   color: black;
   cursor: default;
 }
