@@ -11,14 +11,35 @@ let days = [
 let day = days[now.getDay()];
 let hour = now.getHours();
 if (hour < 10) {
-  hour=`0${hour}`
+  hour = `0${hour}`;
 }
 let minutes = now.getMinutes();
 if (minutes < 10) {
-  minutes=`0${minutes}`
+  minutes = `0${minutes}`;
 }
 let today = document.querySelector("#time");
 today.innerHTML = `${day} , ${hour} : ${minutes}`;
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = "";
+  let days = ["Mon", "Tue", "Wed"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<strong >
+              <li>
+                ${day} <img src="http://openweathermap.org/img/wn/13n.png" alt="" width="150">
+                <br />
+                <span class="forecast-max">18°</span> 
+                <span class="forecast-min">12°</span>
+              </li>
+              </strong>`;
+  });
+   
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
 
 function search(city) {
   let key = "be3787b39239779c9856215f2383d86b";
@@ -33,12 +54,16 @@ function showResult(response) {
   let temperature = document.querySelector("#temperature");
   temperature.innerHTML = Math.round(celsiusTemperature);
   let iconElement = document.querySelector("#icon");
-  iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`) ;
-  document.querySelector("#description").innerHTML = response.data.weather[0].description;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
+  );
+  document.querySelector("#description").innerHTML =
+    response.data.weather[0].description;
   document.querySelector("#Humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
-  ;
-  
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
 }
 function findMe(event) {
   event.preventDefault();
@@ -46,7 +71,6 @@ function findMe(event) {
   search(city);
 }
 function searchLocation(position) {
-  
   let key = "be3787b39239779c9856215f2383d86b";
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${key}&units=metric`;
   axios.get(url).then(showResult);
@@ -64,8 +88,6 @@ function changeFahrenheit(event) {
   temperatureFahrenheit.innerHTML = fahrenheitTemperature;
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
-  
-
 }
 function changeCelsiuse(event) {
   event.preventDefault();
@@ -82,11 +104,10 @@ form.addEventListener("submit", findMe);
 let currentLocation = document.querySelector("#current");
 currentLocation.addEventListener("click", getCurrentLocation);
 search("Tehran");
-
+displayForecast();
 
 let fahrenheitLink = document.querySelector("#fahreniheit");
 fahrenheitLink.addEventListener("click", changeFahrenheit);
 
 let celsiusLink = document.querySelector("#celciuse");
 celsiusLink.addEventListener("click", changeCelsiuse);
-
