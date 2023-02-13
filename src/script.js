@@ -106,23 +106,6 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-function changeFahrenheit(event) {
-  event.preventDefault();
-  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
-  let temperatureFahrenheit = document.querySelector("#temperature");
-  temperatureFahrenheit.innerHTML = fahrenheitTemperature;
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-}
-function changeCelsiuse(event) {
-  event.preventDefault();
-  let temperatureFahrenheit = document.querySelector("#temperature");
-  temperatureFahrenheit.innerHTML = Math.round(celsiusTemperature);
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-}
-
-let celsiusTemperature = null;
 let form = document.querySelector("#search-weather");
 form.addEventListener("submit", findMe);
 
@@ -131,8 +114,4 @@ currentLocation.addEventListener("click", getCurrentLocation);
 search("Tehran");
 
 
-let fahrenheitLink = document.querySelector("#fahreniheit");
-fahrenheitLink.addEventListener("click", changeFahrenheit);
 
-let celsiusLink = document.querySelector("#celciuse");
-celsiusLink.addEventListener("click", changeCelsiuse);
