@@ -20,22 +20,41 @@ if (minutes < 10) {
 let today = document.querySelector("#time");
 today.innerHTML = `${day} , ${hour} : ${minutes}`;
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[date.getDay()];
+
+  return day;
+
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = "";
-  let days = ["Mon", "Tue", "Wed"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<strong >
+  
+  forecast.forEach(function (forecastDay, index) {
+    if (index<5){
+      forecastHTML =
+        forecastHTML +
+        `<strong >
               <li>
-                ${day} <img src="http://openweathermap.org/img/wn/13n.png" alt="" width="150">
+                ${formatDay(
+                  forecastDay.dt
+                )} <img src="http://openweathermap.org/img/wn/${
+          forecastDay.weather[0].icon
+        }.png" alt="" width="150">
                 <br />
-                <span class="forecast-max">18°</span> 
-                <span class="forecast-min">12°</span>
+                <span class="forecast-max">${Math.round(
+                  forecastDay.temp.max
+                )}°</span> 
+                <span class="forecast-min">${Math.round(
+                  forecastDay.temp.min
+                )}°</span>
               </li>
               </strong>`;
+    }
   });
   forecastElement.innerHTML = forecastHTML;
 }
@@ -47,7 +66,6 @@ function search(city) {
 }
 
 function getFroecast(coordinates) {
-  console.log(coordinates);
   let key = "be3787b39239779c9856215f2383d86b";
   let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${key}
 &units=metric`;
